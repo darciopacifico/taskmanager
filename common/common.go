@@ -3,6 +3,7 @@ package common
 import (
 	"github.com/op/go-logging"
 	"os"
+	"time"
 )
 
 type TaskSchedule struct {
@@ -11,27 +12,32 @@ type TaskSchedule struct {
 
 //Wrapper for a task message
 type TaskMessage struct {
-	Id            string
-	Payload       interface{}
-	Status        TaskStatus
+	Id                string
+	Payload           interface{}
+	Status            TaskStatus
 	TaskProcessorName string
-	StatusMessage string
-	Error	      error
-	TaskMetadata  map[string]string
+	StatusMsg     string
+	Error             error
+	TaskMetadata      map[string]string
+	ScheduledAt       time.Time
+	StartedAt         time.Time
+	FinishedAt        time.Time
 }
 
 //basic task processor contract
-type TaskProcessor interface{
+type TaskProcessor interface {
 	ProcessTask(input TaskMessage) (TaskMessage, error)
 }
 
-type DummyProcessor struct {}
-func (d DummyProcessor) ProcessTask(input TaskMessage) (TaskMessage, error){
-	return input,nil
+type DummyProcessor struct{}
+
+func (d DummyProcessor) ProcessTask(input TaskMessage) (TaskMessage, error) {
+	return input, nil
 }
 
 //constant for task status
 type TaskStatus int
+
 const (
 	CREATED TaskStatus = iota
 	SCHEDULED

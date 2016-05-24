@@ -7,6 +7,7 @@ import (
 	"bytes"
 	"github.com/robfig/cron"
 	"github.com/op/go-logging"
+	"time"
 )
 
 var (
@@ -22,24 +23,26 @@ func main() {
 		}
 	}()
 
-	taskMsg := common.TaskMessage{
-		Id            :"1",
-		Payload       :"zubalele",
-		Status        :common.CREATED,
-		TaskProcessorName : "github.com/darciopacifico/taskmanager/invoiceprocessor.InvoiceProcessor",
-		StatusMessage :"",
-		Error              :nil,
-		TaskMetadata  :map[string]string{},
-
-	}
-
 	cron := cron.New()
 
 	cron.AddFunc("* * * * * *", func() {
-		sendMessage(taskMsg, "taskTopic")
+		sendMessage(common.TaskMessage{
+			Id            :"1",
+			Payload       :"zubalele",
+			Status        :common.CREATED,
+			TaskProcessorName : "github.com/darciopacifico/taskmanager/processor.InvoiceProcessor",
+			StatusMsg :"",
+			Error              :nil,
+			TaskMetadata  :map[string]string{},
+			ScheduledAt : time.Now(),
+		}, "taskTopic")
 	})
 
 	cron.Start()
+
+	time.Sleep(1 * time.Hour)
+
+	log.Debug("finished")
 
 }
 

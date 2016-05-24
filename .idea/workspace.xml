@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca719a51-7447-49d7-9168-db4dc3b83758" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/common.go" afterPath="$PROJECT_DIR$/common/common.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taskconsumer/main.go" afterPath="$PROJECT_DIR$/taskconsumer/main.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taskscheduler/main.go" afterPath="$PROJECT_DIR$/taskscheduler/main.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/register/register.go" afterPath="$PROJECT_DIR$/register/register.go" />
     </list>
     <ignored path="TaskManager.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,12 +31,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="main.go" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/taskconsumer/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-              <folding />
+            <state vertical-scroll-proportion="0.7">
+              <caret line="130" column="0" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
+              <folding>
+                <element signature="e#14#297#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -54,9 +59,9 @@
         <entry file="file://$PROJECT_DIR$/register/register.go">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="59" column="67" selection-start-line="59" selection-start-column="67" selection-end-line="59" selection-end-column="67" />
+              <caret line="63" column="41" selection-start-line="63" selection-start-column="41" selection-end-line="63" selection-end-column="41" />
               <folding>
-                <element signature="e#22#183#0" expanded="true" />
+                <element signature="e#22#191#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -72,22 +77,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/taskscheduler/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.14">
-              <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="utils.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../Shopify/sarama/utils.go">
-          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="84" column="5" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
-              <folding />
+              <caret line="38" column="10" selection-start-line="38" selection-start-column="10" selection-end-line="38" selection-end-column="10" />
+              <folding>
+                <element signature="e#14#188#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -96,8 +93,10 @@
         <entry file="file://$PROJECT_DIR$/common/common.go">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
-              <folding />
+              <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
+              <folding>
+                <element signature="e#16#68#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -126,10 +125,20 @@
         <entry file="file://$PROJECT_DIR$/processor/invoice_processor.go">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
+              <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
               <folding>
                 <element signature="e#19#77#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="time.go" pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/go/src/time/time.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="627" column="14" selection-start-line="627" selection-start-column="14" selection-end-line="627" selection-end-column="14" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -162,14 +171,14 @@
         <option value="$PROJECT_DIR$/processor/processor.go" />
         <option value="$PROJECT_DIR$/taskconsumer/birhday/birthday_processor.go" />
         <option value="$PROJECT_DIR$/birhday/birthday_processor.go" />
-        <option value="$PROJECT_DIR$/register/register.go" />
         <option value="$PROJECT_DIR$/invoiceprocessor/invoice_processor.go" />
         <option value="$PROJECT_DIR$/taskproducer/main.go" />
         <option value="$PROJECT_DIR$/processor/birthday_processor.go" />
-        <option value="$PROJECT_DIR$/common/common.go" />
-        <option value="$PROJECT_DIR$/taskconsumer/main.go" />
         <option value="$PROJECT_DIR$/processor/invoice_processor.go" />
+        <option value="$PROJECT_DIR$/common/common.go" />
+        <option value="$PROJECT_DIR$/register/register.go" />
         <option value="$PROJECT_DIR$/taskscheduler/main.go" />
+        <option value="$PROJECT_DIR$/taskconsumer/main.go" />
       </list>
     </option>
   </component>
@@ -745,16 +754,16 @@
       <created>1464048143235</created>
       <option name="number" value="Default" />
       <updated>1464048143235</updated>
-      <workItem from="1464048145916" duration="14655000" />
+      <workItem from="1464048145916" duration="16055000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14655000" />
+    <option name="totallyTimeSpent" value="16055000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -766,7 +775,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.32904884" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" x="182" y="-369" width="1398" height="356" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.32904884" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" x="182" y="-369" width="1398" height="356" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" x="-289" y="-1059" width="419" height="1003" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -871,21 +880,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/register/register.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="59" column="67" selection-start-line="59" selection-start-column="67" selection-end-line="59" selection-end-column="67" />
-          <folding>
-            <element signature="e#22#183#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../Shopify/sarama/async_producer.go">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="113" column="5" selection-start-line="113" selection-start-column="5" selection-end-line="113" selection-end-column="5" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/go/src/go/ast/walk.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="7.66">
+          <caret line="383" column="5" selection-start-line="383" selection-start-column="5" selection-end-line="383" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/register/register.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="63" column="41" selection-start-line="63" selection-start-column="41" selection-end-line="63" selection-end-column="41" />
+          <folding>
+            <element signature="e#22#191#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taskscheduler/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="10" selection-start-line="38" selection-start-column="10" selection-end-line="38" selection-end-column="10" />
+          <folding>
+            <element signature="e#14#188#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -899,37 +926,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/common.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/taskconsumer/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/processor/invoice_processor.go">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
+          <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
           <folding>
             <element signature="e#19#77#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/taskscheduler/main.go">
+    <entry file="file:///usr/local/go/src/time/time.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14">
-          <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="627" column="14" selection-start-line="627" selection-start-column="14" selection-end-line="627" selection-end-column="14" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/common.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
+          <folding>
+            <element signature="e#16#68#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taskconsumer/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7">
+          <caret line="130" column="0" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
+          <folding>
+            <element signature="e#14#297#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -8,6 +8,7 @@ import (
 	"bytes"
 	"github.com/Shopify/sarama"
 	"github.com/op/go-logging"
+	"time"
 )
 
 var log = logging.MustGetLogger("tmg")
@@ -57,7 +58,8 @@ func CreateTaskProcessor(msg *sarama.ConsumerMessage) (common.TaskProcessor, com
 		err := errors.New("Invalid Message! Null")
 		taskMessage := common.TaskMessage{}
 		taskMessage.Error = err
-		taskMessage.StatusMessage = "Invalid Message! null"
+		taskMessage.StatusMsg = "Invalid Message! null"
+		taskMessage.FinishedAt = time.Now()
 		taskMessage.Status = common.FAILED
 		taskMessage.Payload = nil
 		return common.DummyProcessor{}, taskMessage, err
@@ -73,7 +75,8 @@ func CreateTaskProcessor(msg *sarama.ConsumerMessage) (common.TaskProcessor, com
 	if (err != nil) {
 		log.Error("Error trying to decode to TaskMessage", err)
 		taskMessage.Error = err
-		taskMessage.StatusMessage = "Error trying to decode to TaskMessage:" + err.Error()
+		taskMessage.StatusMsg = "Error trying to decode to TaskMessage:" + err.Error()
+		taskMessage.FinishedAt = time.Now()
 		taskMessage.Status = common.FAILED
 		taskMessage.Payload = nil
 		return common.DummyProcessor{}, taskMessage, err
@@ -85,7 +88,8 @@ func CreateTaskProcessor(msg *sarama.ConsumerMessage) (common.TaskProcessor, com
 		log.Error("Error trying to create processor. Processor not registered!", taskMessage.TaskProcessorName)
 		err := errors.New("Error trying to create processor. Processor not registered!")
 		taskMessage.Error = err
-		taskMessage.StatusMessage = "Error trying to create processor. Processor not registered!"
+		taskMessage.StatusMsg = "Error trying to create processor. Processor not registered!"
+		taskMessage.FinishedAt = time.Now()
 		taskMessage.Status = common.FAILED
 		taskMessage.Payload = nil
 		return common.DummyProcessor{}, taskMessage, err
@@ -101,7 +105,8 @@ func CreateTaskProcessor(msg *sarama.ConsumerMessage) (common.TaskProcessor, com
 		log.Error("Error trying to create processor. Registered type is not TaskProcessor compatible")
 		err := errors.New("Error trying to create processor. Registered type is not TaskProcessor compatible")
 		taskMessage.Error = err
-		taskMessage.StatusMessage = "Error trying to create processor. Registered type is not TaskProcessor compatible"
+		taskMessage.StatusMsg = "Error trying to create processor. Registered type is not TaskProcessor compatible"
+		taskMessage.FinishedAt = time.Now()
 		taskMessage.Status = common.FAILED
 		taskMessage.Payload = nil
 		return common.DummyProcessor{}, taskMessage, err

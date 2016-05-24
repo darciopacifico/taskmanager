@@ -75,12 +75,14 @@ func main() {
 					//this behaviour could force messages to go other consumers
 					//TODO: use a sync.WaitingGroup!!!
 
+
 					go processMessage(taskProcessor, taskMessage)
 
 				}else {
 					taskMessage = common.TaskMessage{}
 					taskMessage.Status = common.FAILED
-					taskMessage.StatusMessage = fmt.Sprintf("Error trying to create taskProcessor! %v", err.Error())
+					taskMessage.StatusMsg = fmt.Sprintf("Error trying to create taskProcessor! %v", err.Error())
+					taskMessage.FinishedAt = time.Now()
 
 					taskMessage.Error = err
 					produceTaskFeedback(taskMessage, err)
@@ -110,13 +112,23 @@ func processMessage(taskProcessor common.TaskProcessor, taskMessage common.TaskM
 
 	log.Debug("Starting message consumption, msg id:", taskMessage.Id, " processor:", taskMessage.TaskProcessorName)
 
+
+	taskMessage.StartedAt=time.Now()
 	outputTask, errProc := taskProcessor.ProcessTask(taskMessage)
+	outputTask.FinishedAt = time.Now()
 	produceTaskFeedback(outputTask, errProc)
 
 }
 
 //TODO: produce a feedback message
 func produceTaskFeedback(task common.TaskMessage, err error) {
+
+
+
+	duration := task.FinishedAt.Sub(task.StartedAt)
+
+	log.Debug("Task id ", task.Id, " processor ",task.TaskProcessorName," takes ", duration)
+
 	if (err != nil) {
 		log.Warning("Error trying to process message! send this back to some kafka topic!", err)
 	}else {

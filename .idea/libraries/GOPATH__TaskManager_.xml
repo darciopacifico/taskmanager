@@ -1,0 +1,49 @@
+<component name="libraryTable">
+  <library name="GOPATH &lt;TaskManager&gt;">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../../gopkg.in" />
+      <root url="file://$PROJECT_DIR$/../.." />
+      <root url="file://$PROJECT_DIR$/../../../golang.org" />
+      <root url="file://$PROJECT_DIR$/../../../gitlab.wmxp.com.br" />
+      <root url="file://$PROJECT_DIR$/../../../.DS_Store" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <excluded>
+      <root url="file://$PROJECT_DIR$/../../bsm/sarama-cluster/.git" />
+      <root url="file://$PROJECT_DIR$/../../mailru/easyjson/.git" />
+      <root url="file://$PROJECT_DIR$" />
+      <root url="file://$PROJECT_DIR$/.idea" />
+      <root url="file://$PROJECT_DIR$/../enablecache/.idea" />
+      <root url="file://$PROJECT_DIR$/../../gorilla/context/.git" />
+      <root url="file://$PROJECT_DIR$/../../bsm/sarama-cluster/testdata" />
+      <root url="file://$PROJECT_DIR$/../../garyburd/redigo/.git" />
+      <root url="file://$PROJECT_DIR$/../../klauspost/crc32/.git" />
+      <root url="file://$PROJECT_DIR$/../../tinylib/msgp/_generated" />
+      <root url="file://$PROJECT_DIR$/../../../gitlab.wmxp.com.br/bis/biro/.git" />
+      <root url="file://$PROJECT_DIR$/.git" />
+      <root url="file://$PROJECT_DIR$/../../tinylib/msgp/.git" />
+      <root url="file://$PROJECT_DIR$/../../rcrowley/go-metrics/.git" />
+      <root url="file://$PROJECT_DIR$/../../davecgh/go-spew/.git" />
+      <root url="file://$PROJECT_DIR$/../../../gopkg.in/vmihailenco/msgpack.v2/.git" />
+      <root url="file://$PROJECT_DIR$/../../hashicorp/golang-lru/.git" />
+      <root url="file://$PROJECT_DIR$/../../davecgh/go-spew/spew/testdata" />
+      <root url="file://$PROJECT_DIR$/../../golang/snappy/testdata" />
+      <root url="file://$PROJECT_DIR$/../../eapache/queue/.git" />
+      <root url="file://$PROJECT_DIR$/../../golang/snappy/.git" />
+      <root url="file://$PROJECT_DIR$/../enablecache/Godeps/_workspace" />
+      <root url="file://$PROJECT_DIR$/../../philhofer/fwd/.git" />
+      <root url="file://$PROJECT_DIR$/../../robfig/cron/.git" />
+      <root url="file://$PROJECT_DIR$/../../op/go-logging/.git" />
+      <root url="file://$PROJECT_DIR$/../../eapache/go-resiliency/.git" />
+      <root url="file://$PROJECT_DIR$/../../Shopify/sarama/.git" />
+      <root url="file://$PROJECT_DIR$/../../../gitlab.wmxp.com.br/bis/biro/.idea" />
+      <root url="file://$PROJECT_DIR$/../../marciocarmona/jq/.git" />
+      <root url="file://$PROJECT_DIR$/../../kardianos/govendor/.git" />
+      <root url="file://$PROJECT_DIR$/../../marciocarmona/jq/_testdata" />
+      <root url="file://$PROJECT_DIR$/../../gorilla/mux/.git" />
+      <root url="file://$PROJECT_DIR$/../../../golang.org/x/blog/.git" />
+      <root url="file://$PROJECT_DIR$/../enablecache/.git" />
+    </excluded>
+  </library>
+</component>

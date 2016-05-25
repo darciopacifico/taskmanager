@@ -22,7 +22,7 @@ Kafka is the component that allows the entire solution to be dynamicaly scalable
 
 * taskconsumer
 
-Go application that listen and consumes task messages from Kafka. This go app instances could be freely instantiated and gracefully stopped (Ctrl+C Signal, SIGINT etc) at any time. The signal to interrupt will make taskconsumer to stop message receiving and wait for current message consumption.
+Go application that listen and consumes task messages from Kafka. This go app instances can be freely instantiated and gracefully stopped (Ctrl+C Signal, SIGINT etc) at any time, **in multiple instances in same or different cluster nodes**. The signal to interrupt will make taskconsumer to stop message receiving and wait for current message consumption.
 
 This app commit the topic/partition offset at every message, before message processing. There is no current policy for retry, DLQ etc.
 

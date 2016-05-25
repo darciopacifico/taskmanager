@@ -16,7 +16,7 @@ Taskmanager architecture allows any number of taskschedulers instances, managing
 
 * message broker
 
-Kafka cluster that task message topics. Important! Topics must be partitioned at minimum the same number of potential consumers. In production environment the topic replication-factor > 1 can assure for message delivery and availability of kafka message service.
+Kafka cluster that manages message topics. Important! Topics must be partitioned at minimum the same number of potential consumers. In production environment the topic replication-factor > 1 can assure for message delivery and availability of kafka message service.
 
 Kafka is the component that allows the entire solution to be dynamicaly scalable as requested, actualy.
 

@@ -2,7 +2,7 @@
 
 Go Task manager based on github.com/robfig/cron, Cluster/Sarama and Kafka.
 
-# The task manager solution was designed in 3 parts:
+### The task manager solution was designed in 3 parts:
 
 * taskscheduler
 

@@ -48,15 +48,11 @@ When a new taskconsumer app is instantiated or stopped, the Zookeeper imediatell
 
 ### app running
 
-  - start taskscheduler 
-
-    Terminal 1
+  - start taskscheduler, Terminal 1
 
     taskscheduler -brokers=localhost:9092 -schedule=config/taskscheduler.json
     
-  - start tastconsumer
-
-    Terminals 2 to N 
+  - start tastconsumer, multiple instances, Terminals 2 to N 
 
     taskconsumer -l=DEBUG -topic=taskTopic -brokers=localhost:9092
 

@@ -5,6 +5,7 @@ Go Task manager based on github.com/robfig/cron, Cluster/Sarama and Kafka.
 First, I would like to apologize for:
 - Not having been able to package the entire solution using docker-compose as requested. Actually i have not quite mastered the tool and can not perform this task in the required time.
 - Not having been able to implement unit tests for this solution.
+- There is some offset/commit bug in the solution. Taskconsumer lose messages when is out.
 
 **The task manager solution was designed in 3 parts:**
 

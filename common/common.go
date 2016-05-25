@@ -7,21 +7,23 @@ import (
 )
 
 type TaskSchedule struct {
-
+	Id                  string      `json:"Id"`
+	Cron                string      `json:"Cron"`
+	Topic               string      `json:"Topic"`
+	TaskMessageTemplate TaskMessage `json:"TaskMessageTemplate"`
 }
 
 //Wrapper for a task message
 type TaskMessage struct {
-	Id                string
-	Payload           interface{}
-	Status            TaskStatus
-	TaskProcessorName string
-	StatusMsg     string
-	Error             error
-	TaskMetadata      map[string]string
-	ScheduledAt       time.Time
-	StartedAt         time.Time
-	FinishedAt        time.Time
+	Id 								string 							`json:"-"`
+	TaskProcessorName string              `json:"TaskProcessorName"`
+	TaskParam         string   						`json:"TaskParam"`
+	Status            TaskStatus          `json:"-"`
+	StatusMsg         string              `json:"-"`
+	Error             error               `json:"-"`
+	ScheduledAt       time.Time           `json:"-"`
+	StartedAt         time.Time           `json:"-"`
+	FinishedAt        time.Time           `json:"-"`
 }
 
 //basic task processor contract
@@ -47,14 +49,16 @@ const (
 )
 
 //config a logger to specified module
-func SetLogger() {
+func SetLogger(logLevel string) {
 
 	format := logging.MustStringFormatter("%{color}%{time:15:04:05.000} PID:%{pid} %{shortfunc} ▶ %{level:.4s} %{id:03x}%{color:reset} %{message}")
 	backend1 := logging.NewLogBackend(os.Stdout, "", 0)
 	backend1Formatter := logging.NewBackendFormatter(backend1, format)
 	logging.SetBackend(backend1Formatter)
 
-	logging.SetLevel(logging.DEBUG, "tmg")
+	level, _ := logging.LogLevel(logLevel)
+
+	logging.SetLevel(level, "tmg")
 
 }
 

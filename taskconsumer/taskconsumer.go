@@ -3,47 +3,72 @@ package main
 import (
 	"fmt"
 	"os"
+	"time"
+	"flag"
+	"strings"
+	"sync"
 	"os/signal"
+	"github.com/Shopify/sarama"
 	"github.com/bsm/sarama-cluster"
 	"github.com/darciopacifico/taskmanager/common"
 	"github.com/op/go-logging"
 	"github.com/darciopacifico/taskmanager/register"
 	"github.com/darciopacifico/taskmanager/processor"
-	"time"
-	"github.com/Shopify/sarama"
 )
 
-var log = logging.MustGetLogger("tmg")
+var (
+	log = logging.MustGetLogger("tmg")
+	KafkaBrokers string
+	StrLogLevel string
+	TopicName string
+	//avoid consumer abruptally stops
+	waitingGroup = sync.WaitGroup{}
+)
 
 func init() {
+	parseFlags()
+
 	taskconsumer.RegisterTaskProcessor(processor.BirthdayProcessor{})
 	taskconsumer.RegisterTaskProcessor(processor.InvoiceProcessor{})
-	common.SetLogger()
+	common.SetLogger(StrLogLevel)
+}
+
+//parse all entry flags and configure application settings one time
+func parseFlags() {
+	if !flag.Parsed() {
+		flag.StringVar(&TopicName, "topic", "", "Kafka topic name for task scheduling!")
+		flag.StringVar(&StrLogLevel, "l", "DEBUG", "Loglevel: DEBUG | INFO | NOTICE | WARNING | ERROR | CRITICAL")
+		flag.StringVar(&KafkaBrokers, "brokers", "", "Comma separeted string containing the Kafka Brokers. Like: <host1>:9092,<host2>:9092")
+		flag.Parse()
+	}
 }
 
 func main() {
-	log.Debug("Starting task consumer")
 
 	config := cluster.NewConfig()
-	//config.ClientID="taskManagerAgent"
-	config.Consumer.Return.Errors = true
-
 	config.Consumer.Offsets.Initial = sarama.OffsetNewest
 	config.Consumer.Offsets.CommitInterval = time.Hour * 10
 
-	// Specify brokers address. This is default one
-	brokers := []string{"localhost:9092"}
+	KafkaBrokers = strings.TrimSpace(KafkaBrokers)
 
-	topic := "taskTopic"
+	if (len(KafkaBrokers) == 0) {
+		log.Error("Please specify a kafka broker list. See taskconsumer -help for more info!")
+		os.Exit(1)
+	}
+
+	arrHosts := strings.Split(KafkaBrokers, ",")
+
 	// Create new consumer
-	master, err := cluster.NewConsumer(brokers, "taskConsumer", []string{topic}, config)
+	master, err := cluster.NewConsumer(arrHosts, "taskConsumer", []string{TopicName}, config)
 	if err != nil {
-		panic(err)
+		log.Error("Error trying to connect to kafka a! ", err)
+		os.Exit(1)
 	}
 
 	defer func() {
 		if err := master.Close(); err != nil {
-			panic(err)
+			log.Error("Error when exiting Task Processor!", err)
+			os.Exit(1)
 		}
 	}()
 
@@ -54,6 +79,7 @@ func main() {
 
 	// Count how many message processed
 	msgCount := 0
+
 
 	// Get signnal for finish
 	doneCh := make(chan struct{})
@@ -69,13 +95,13 @@ func main() {
 				taskProcessor, taskMessage, err := taskconsumer.CreateTaskProcessor(msg)
 
 				if (err == nil) {
-					log.Debug("Starting a goroutine for message consumption, msg id:", taskMessage.Id, " processor:", taskMessage.TaskProcessorName)
+					log.Debug("Starting a goroutine for message consumption processor:", taskMessage.TaskProcessorName)
 					//TODO: should be a processor pool, limiting concurrent processing?
 					//TODO: disconnect from kafka when certain limit of messages enqued, connecting back when a safe limit was reached?
 					//this behaviour could force messages to go other consumers
 					//TODO: use a sync.WaitingGroup!!!
 
-
+					waitingGroup.Add(1)
 					go processMessage(taskProcessor, taskMessage)
 
 				}else {
@@ -96,6 +122,10 @@ func main() {
 	}()
 
 	<-doneCh
+
+	log.Debug("Waiting for current running tasks...")
+	waitingGroup.Wait()
+
 	fmt.Println("Processed", msgCount, "messages")
 
 }
@@ -105,36 +135,33 @@ func processMessage(taskProcessor common.TaskProcessor, taskMessage common.TaskM
 	defer func() {
 		//assure for not panicking out
 		if r := recover(); r != nil {
-			log.Error("Error trying to process message id ", taskMessage.Id, " processor ", taskMessage.TaskProcessorName)
+			log.Error("Error trying to process message processor ", taskMessage.TaskProcessorName)
 			return
 		}
+
+		waitingGroup.Done()
 	}()
 
-	log.Debug("Starting message consumption, msg id:", taskMessage.Id, " processor:", taskMessage.TaskProcessorName)
+	log.Debug("Starting message consumption, msg processor:", taskMessage.TaskProcessorName)
 
-
-	taskMessage.StartedAt=time.Now()
+	taskMessage.StartedAt = time.Now()
 	outputTask, errProc := taskProcessor.ProcessTask(taskMessage)
 	outputTask.FinishedAt = time.Now()
 	produceTaskFeedback(outputTask, errProc)
+
 
 }
 
 //TODO: produce a feedback message
 func produceTaskFeedback(task common.TaskMessage, err error) {
 
-
-
 	duration := task.FinishedAt.Sub(task.StartedAt)
 
-	log.Debug("Task id ", task.Id, " processor ",task.TaskProcessorName," takes ", duration)
+	log.Debug("Task processor ", task.TaskProcessorName, " takes ", duration)
 
 	if (err != nil) {
 		log.Warning("Error trying to process message! send this back to some kafka topic!", err)
 	}else {
-		log.Debug("Message processed successfully!! Send this back to some kafka topic!")
+		log.Debug("Message processed successfully!! Send this back to some kafka topic!", task.Id)
 	}
 }
-
-
-

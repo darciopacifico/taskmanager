@@ -61,7 +61,6 @@ func CreateTaskProcessor(msg *sarama.ConsumerMessage) (common.TaskProcessor, com
 		taskMessage.StatusMsg = "Invalid Message! null"
 		taskMessage.FinishedAt = time.Now()
 		taskMessage.Status = common.FAILED
-		taskMessage.Payload = nil
 		return common.DummyProcessor{}, taskMessage, err
 	}
 
@@ -78,7 +77,6 @@ func CreateTaskProcessor(msg *sarama.ConsumerMessage) (common.TaskProcessor, com
 		taskMessage.StatusMsg = "Error trying to decode to TaskMessage:" + err.Error()
 		taskMessage.FinishedAt = time.Now()
 		taskMessage.Status = common.FAILED
-		taskMessage.Payload = nil
 		return common.DummyProcessor{}, taskMessage, err
 	}
 
@@ -91,7 +89,6 @@ func CreateTaskProcessor(msg *sarama.ConsumerMessage) (common.TaskProcessor, com
 		taskMessage.StatusMsg = "Error trying to create processor. Processor not registered!"
 		taskMessage.FinishedAt = time.Now()
 		taskMessage.Status = common.FAILED
-		taskMessage.Payload = nil
 		return common.DummyProcessor{}, taskMessage, err
 	}
 
@@ -108,7 +105,6 @@ func CreateTaskProcessor(msg *sarama.ConsumerMessage) (common.TaskProcessor, com
 		taskMessage.StatusMsg = "Error trying to create processor. Registered type is not TaskProcessor compatible"
 		taskMessage.FinishedAt = time.Now()
 		taskMessage.Status = common.FAILED
-		taskMessage.Payload = nil
 		return common.DummyProcessor{}, taskMessage, err
 	}
 

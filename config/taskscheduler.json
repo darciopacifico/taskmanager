@@ -1,0 +1,39 @@
+[
+  {
+    "Id"                  :"1",
+    "Cron"                :"* * * * * *",
+    "Topic"               :"taskTopic",
+    "TaskMessageTemplate" : {
+      "TaskProcessorName" : "github.com/darciopacifico/taskmanager/processor.InvoiceProcessor",
+      "TaskParam"         : "task param xyz",
+      "Payload"           : ["Ireland","Germany","Italy"]
+    }
+  },
+  {
+    "Id"                  :"2",
+    "Cron"                :"* * * * * *",
+    "Topic"               :"taskTopic",
+    "TaskMessageTemplate" : {
+      "TaskProcessorName" : "github.com/darciopacifico/taskmanager/processor.InvoiceProcessor",
+      "TaskParam"         : "task param xyz"
+    }
+  },
+  {
+    "Id"                  :"3",
+    "Cron"                :"* * * * * *",
+    "Topic"               :"taskTopic",
+    "TaskMessageTemplate" : {
+      "TaskProcessorName" : "github.com/darciopacifico/taskmanager/processor.BirthdayProcessor",
+      "TaskParam"         : "task param xyz"
+    }
+  },
+  {
+    "Id"                  :"4",
+    "Cron"                :"* * * * * *",
+    "Topic"               :"taskTopic",
+    "TaskMessageTemplate" : {
+      "TaskProcessorName" : "github.com/darciopacifico/taskmanager/processor.BirthdayProcessor",
+      "TaskParam"         : "task param xyz"
+    }
+  }
+]

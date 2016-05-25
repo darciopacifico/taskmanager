@@ -21,10 +21,18 @@ When a new taskconsumer app is instantiated, the Zookeeper imediatelly rebalance
 ## How to start the solution
 
 * Requirements: Java 7, Go SDK
+
 - Download and descompact [kafka_2.11-0.9.0.1](https://www.apache.org/dyn/closer.cgi?path=/kafka/0.10.0.0/kafka_2.11-0.10.0.0.tgz)
 - Start zookeeper: [kafka_dir/bin]/zookeeper-server-start.sh ../config/zookeeper.properties
-- Start kafka: <kafka_dir/bin>/kafka-server-start.sh ../config/server.properties
-- Create sample topic: <kafka_dir/bin>/kafka-topics.sh --create --topic taskTopic --zookeeper localhost:2181 --partitions 12 --replication-factor 1
+- Start kafka: [kafka_dir/bin]/kafka-server-start.sh ../config/server.properties
+- Create sample topic: [kafka_dir/bin]/kafka-topics.sh --create --topic taskTopic --zookeeper localhost:2181 --partitions 12 --replication-factor 1
+
+* Clone and compile taskmanager app
+
+https://github.com/darciopacifico/taskmanager.git
+cd $GOPATH/src/github.com/darciopacifico/taskmanager/
+go get ./...
+go install ./...
 
 
 

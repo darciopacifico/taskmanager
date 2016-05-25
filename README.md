@@ -12,11 +12,13 @@ First, I would like to apologize for:
 
 Go application that parse the [JSON](https://github.com/darciopacifico/taskmanager/blob/master/config/taskscheduler.json) containing the task schedule specs and register the schedules in a cron like mechanism. When cron triggers an scheduled event, taskscheduler produces a kafka message task to topic *taskTopic*. This message is a signal to task starting.
 
-Taskmanager architecture allows any number of taskschedulers instances, managing different schedule tasks files, sending messagens to different kafka topics.
+Taskmanager architecture allows any number of taskschedulers instances, managing different schedule tasks files, sending messagens to different kafka topics. As a TODO would be great to taskscheduler to receive step-by-step processing confirmation from consumer, generate metrics, implement retry policy, priorization etc.
 
 * message broker
 
 Kafka cluster that task message topics. Important! Topics must be partitioned at minimum the same number of potential consumers. In production environment the topic replication-factor > 1 can assure for message delivery and availability of kafka message service.
+
+Kafka is the component that allows the entire solution to be dynamicaly scalable as requested, actualy.
 
 * taskconsumer
 
@@ -24,7 +26,7 @@ Go application that listen and consumes task messages from Kafka. This go app in
 
 As consumer example, there is an Invoice Processor and a Birthday Greatings Processor apps. Both sample apps only print log messages.
 
-When a new taskconsumer app is instantiated or stopped, the Zookeeper imediatelly rebalance the message delivery to all instances.
+When a new taskconsumer app is instantiated or stopped, Kafka + Cluster/Sarama lib immediately rebalance the message delivery to all remaining and/or new instances with same groupid, no matter how many instances or instance location.
 
 ## How to start the solution
 

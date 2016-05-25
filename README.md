@@ -5,7 +5,6 @@ Go Task manager based on github.com/robfig/cron, Cluster/Sarama and Kafka.
 First, I would like to apologize for:
 - Not having been able to package the entire solution using docker-compose as requested. Actually i have not quite mastered the tool and can not perform this task in the required time.
 - Not having been able to implement unit tests for this solution.
-- There is some offset/commit bug in the solution. Taskconsumer lose messages when is out.
 
 **The task manager solution was designed in 3 parts:**
 
@@ -17,17 +16,21 @@ Taskmanager architecture allows any number of taskschedulers instances, managing
 
 * message broker
 
-Kafka cluster that task message topics. Important! Topics must be partitioned at minimum the same number of potential consumers. In production environment the topic replication-factor > 1 can assure for message delivery and availability of kafka message service.
+Kafka cluster that manages message topics. Important! Topics must be partitioned at minimum the same number of potential consumers. In production environment the topic replication-factor > 1 can assure for message delivery and availability of kafka message service.
 
 Kafka is the component that allows the entire solution to be dynamicaly scalable as requested, actualy.
 
 * taskconsumer
 
-Go application that listen and consumes task messages from Kafka. This go app instances could be freely instantiated and gracefully stopped (Ctrl+C Signal, SIGINT etc) at any time. The signal to interrupt will make taskconsumer to stop message receiving and wait for current message consumption.
+Go application that listen and consumes task messages from Kafka. This go app instances can be freely instantiated and gracefully stopped (Ctrl+C Signal, SIGINT etc) at any time, **in multiple instances in same or different cluster nodes**. The signal to interrupt will make taskconsumer to stop message receiving and wait for current message consumption.
+
+This app commit the topic/partition offset at every message, before message processing. There is no current policy for retry, DLQ etc.
 
 As consumer example, there is an Invoice Processor and a Birthday Greatings Processor apps. Both sample apps only print log messages.
 
-When a new taskconsumer app is instantiated or stopped, Kafka + Cluster/Sarama lib immediately rebalance the message delivery to all remaining and/or new instances with same groupid, no matter how many instances or instance location.
+When a new taskconsumer app is instantiated or stopped, Kafka + Cluster/Sarama lib immediately rebalance the message delivery to all remaining and/or new instances with same groupid, no matter how many instances or location.
+
+If no consumer is available, all messages stay stored in kafka until one or more consumers instantiation.
 
 ## How to start the solution
 

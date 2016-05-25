@@ -24,4 +24,5 @@ _testmain.go
 *.test
 *.prof
 
+.idea/workspace.xml
 # Created by .ignore support plugin (hsz.mobi)

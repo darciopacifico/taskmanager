@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ca719a51-7447-49d7-9168-db4dc3b83758" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taskconsumer/taskconsumer.go" afterPath="$PROJECT_DIR$/taskconsumer/taskconsumer.go" />
-    </list>
+    <list default="true" id="ca719a51-7447-49d7-9168-db4dc3b83758" name="Default" comment="" />
     <ignored path="TaskManager.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -31,8 +29,8 @@
       <file leaf-file-name="taskconsumer.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/taskconsumer/taskconsumer.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.76">
-              <caret line="98" column="41" selection-start-line="98" selection-start-column="41" selection-end-line="98" selection-end-column="41" />
+            <state vertical-scroll-proportion="-0.06">
+              <caret line="86" column="9" selection-start-line="86" selection-start-column="9" selection-end-line="86" selection-end-column="9" />
               <folding>
                 <element signature="e#14#324#0" expanded="true" />
               </folding>
@@ -875,12 +873,12 @@
       <updated>1464048143235</updated>
       <workItem from="1464048145916" duration="18357000" />
       <workItem from="1464126544982" duration="2495000" />
-      <workItem from="1464141076185" duration="11161000" />
+      <workItem from="1464141076185" duration="11399000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32013000" />
+    <option name="totallyTimeSpent" value="32251000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
@@ -1229,8 +1227,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/taskconsumer/taskconsumer.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.76">
-          <caret line="98" column="41" selection-start-line="98" selection-start-column="41" selection-end-line="98" selection-end-column="41" />
+        <state vertical-scroll-proportion="-0.06">
+          <caret line="86" column="9" selection-start-line="86" selection-start-column="9" selection-end-line="86" selection-end-column="9" />
           <folding>
             <element signature="e#14#324#0" expanded="true" />
           </folding>

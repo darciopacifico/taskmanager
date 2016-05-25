@@ -6,7 +6,7 @@ Go Task manager based on github.com/robfig/cron, Cluster/Sarama and Kafka.
 
 * taskscheduler
 
-Go application that parse the JSON containing the task schedule specs and register schedule in a cron like mechanism. When the cron triggers an scheduled event, taskscheduler produces a task start signal, sending a message task to Kafka topic. Taskmanager architecture allows any number of taskschedulers instances, managing different schedule tasks.
+Go application that parse the [JSON](https://github.com/darciopacifico/taskmanager/blob/master/config/taskscheduler.json) containing the task schedule specs and register schedule in a cron like mechanism. When the cron triggers an scheduled event, taskscheduler produces a task start signal, sending a message task to Kafka topic. Taskmanager architecture allows any number of taskschedulers instances, managing different schedule tasks.
 
 * message broker
 

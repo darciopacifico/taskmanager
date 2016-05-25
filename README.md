@@ -6,18 +6,21 @@ Go Task manager based on github.com/robfig/cron, Cluster/Sarama and Kafka.
 
 * taskscheduler
 
-Go application that parse the [JSON](https://github.com/darciopacifico/taskmanager/blob/master/config/taskscheduler.json) containing the task schedule specs and register schedule in a cron like mechanism. When the cron triggers an scheduled event, taskscheduler produces a task start signal, sending a message task to Kafka topic. Taskmanager architecture allows any number of taskschedulers instances, managing different schedule tasks.
+Go application that parse the [JSON](https://github.com/darciopacifico/taskmanager/blob/master/config/taskscheduler.json) containing the task schedule specs and register the schedules in a cron like mechanism. When cron triggers an scheduled event, taskscheduler produces a kafka message task to topic *taskTopic*. This message is a signal to task starting.
+
+Taskmanager architecture allows any number of taskschedulers instances, managing different schedule tasks files, sending messagens to different kafka topics.
 
 * message broker
 
-Kafka cluster that holds a partitioned topic to receive and serve TaskMessage stream. Important! Topics must be partitioned at minimum the same number of potential consumers. In production environment the topic replication-factor > 1 can assure for message delivery and availability of kafka message service.
+Kafka cluster that task message topics. Important! Topics must be partitioned at minimum the same number of potential consumers. In production environment the topic replication-factor > 1 can assure for message delivery and availability of kafka message service.
 
 * taskconsumer
 
-Go application that listen and consumes task messages from Kafka. This go app instances could be freely instantiated and gracefully stopped (Ctrl+C Signal, SIGINT etc) at any time. The signal to interrupt will make taskconsumer to stop to receive new messages and wait for current message consumption.
-As consumer example, there is a Invoice Processor and a Birthday Greatings Processor apps.
+Go application that listen and consumes task messages from Kafka. This go app instances could be freely instantiated and gracefully stopped (Ctrl+C Signal, SIGINT etc) at any time. The signal to interrupt will make taskconsumer to stop message receiving and wait for current message consumption.
 
-When a new taskconsumer app is instantiated, the Zookeeper imediatelly rebalance the message delivery to all instances, same when one taskconsumer is stopped.
+As consumer example, there is an Invoice Processor and a Birthday Greatings Processor apps. Both sample apps only print log messages.
+
+When a new taskconsumer app is instantiated or stopped, the Zookeeper imediatelly rebalance the message delivery to all instances.
 
 ## How to start the solution
 
@@ -46,11 +49,15 @@ When a new taskconsumer app is instantiated, the Zookeeper imediatelly rebalance
 ### app running
 
   - start taskscheduler 
+
     Terminal 1
+
     taskscheduler -brokers=localhost:9092 -schedule=config/taskscheduler.json
     
   - start tastconsumer
+
     Terminals 2 to N 
+
     taskconsumer -l=DEBUG -topic=taskTopic -brokers=localhost:9092
 
   

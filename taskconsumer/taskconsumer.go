@@ -47,7 +47,7 @@ func main() {
 
 	config := cluster.NewConfig()
 	config.Consumer.Offsets.Initial = sarama.OffsetNewest
-	config.Consumer.Offsets.CommitInterval = time.Hour * 10
+	config.Consumer.Offsets.CommitInterval = time.Second * 10
 
 	KafkaBrokers = strings.TrimSpace(KafkaBrokers)
 
@@ -103,6 +103,12 @@ func main() {
 
 					waitingGroup.Add(1)
 					go processMessage(taskProcessor, taskMessage)
+
+					master.MarkOffset(msg,"")
+					errOff := master.CommitOffsets()
+					if(errOff!=nil){
+						log.Error("Error trying to commit offset!",errOff)
+					}
 
 				}else {
 					taskMessage = common.TaskMessage{}

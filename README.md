@@ -30,8 +30,11 @@ When a new taskconsumer app is instantiated, the Zookeeper imediatelly rebalance
 * Clone and compile taskmanager app
 
 https://github.com/darciopacifico/taskmanager.git
+
 cd $GOPATH/src/github.com/darciopacifico/taskmanager/
+
 go get ./...
+
 go install ./...
 
 

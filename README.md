@@ -37,7 +37,7 @@ If no consumer is available, all messages stay stored in kafka until one or more
 ### Docker compose installation
 
 - Download [docker-compose.yml](https://raw.githubusercontent.com/darciopacifico/taskmanager/master/docker-compose.yml) in an empty directory
-- Using terminal go the directory containing the docker-compose.yml
+- Using SO terminal, go the directory containing the docker-compose.yml
 - execute docker-compose up
 
 ### Manual kafka and Apps installation 

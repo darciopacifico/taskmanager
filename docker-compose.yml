@@ -1,0 +1,41 @@
+version: '2'
+
+services:
+ 
+ dlp_kafka:
+  image: darcio/dlp_kafka:latest
+  container_name: dlp_kafka
+  expose:
+   - "2181"
+   - "9092"
+
+ dlp_taskscheduler1:
+  image: darcio/dlp_taskscheduler
+  container_name: dlp_taskscheduler1
+  depends_on:
+   - dlp_kafka
+  links:
+   - dlp_kafka
+
+ dlp_taskconsumer1:
+  image: darcio/dlp_taskconsumer
+  depends_on:
+   - dlp_kafka
+  links:
+   - dlp_kafka
+
+
+ dlp_taskconsumer2:
+  image: darcio/dlp_taskconsumer
+  depends_on:
+   - dlp_kafka
+  links:
+   - dlp_kafka
+
+ dlp_taskconsumer3:
+  image: darcio/dlp_taskconsumer
+  depends_on:
+   - dlp_kafka
+  links:
+   - dlp_kafka
+

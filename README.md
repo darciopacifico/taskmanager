@@ -1,6 +1,6 @@
 # taskmanager
 
-Go Task manager based on github.com/robfig/cron, Cluster/Sarama and Kafka.
+Go Task manager based on github.com/robfig/cron, Cluster/Sarama and Kafka. Dynamically adapts its capacity on the fly, considering available new incoming nodes and decommissioned nodes, even during task processing.
 
 First, I would like to apologize for, not having been able to implement unit tests for this solution.
 
